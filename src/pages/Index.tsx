@@ -1,11 +1,13 @@
-import { useNavigate } from "react-router-dom";
-import { ArrowRight, Calendar, Target, Users, Star } from "lucide-react";
+import { ArrowRight, Calendar, Target, Users, Heart, LogIn, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "@/hooks/useAuth";
 import heroImage from "@/assets/hero-journey.jpg";
 
 const Index = () => {
   const navigate = useNavigate();
+  const { user, signOut } = useAuth();
 
   const handleStartJourney = () => {
     navigate("/journey/1");
@@ -13,6 +15,29 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* Header */}
+      <div className="container mx-auto px-4 py-6 flex justify-between items-center">
+        <h1 className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+          120 Days to Freedom
+        </h1>
+        <div className="flex items-center space-x-2">
+          {user ? (
+            <Button variant="outline" size="sm" onClick={signOut}>
+              Sign Out
+            </Button>
+          ) : (
+            <Button 
+              variant="outline" 
+              size="sm" 
+              onClick={() => navigate("/auth")}
+              className="flex items-center space-x-2"
+            >
+              <LogIn className="w-4 h-4" />
+              <span>Sign In</span>
+            </Button>
+          )}
+        </div>
+      </div>
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div 

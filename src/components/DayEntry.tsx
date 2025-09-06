@@ -2,6 +2,8 @@ import { BookOpen, Target, Heart, Lightbulb, Star } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { DayEntry as DayEntryType } from "@/types/journey";
+import { useAuth } from "@/hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 interface DayEntryProps {
   entry: DayEntryType;
@@ -10,6 +12,17 @@ interface DayEntryProps {
 }
 
 export const DayEntry = ({ entry, onComplete, isCompleted }: DayEntryProps) => {
+  const { user } = useAuth();
+  const navigate = useNavigate();
+
+  const handleComplete = () => {
+    if (entry.day === 1 && !user) {
+      // After completing day 1, prompt for login
+      navigate("/auth", { state: { from: `/journey/${entry.day}` } });
+      return;
+    }
+    onComplete(entry.day);
+  };
   return (
     <div className="max-w-4xl mx-auto space-y-6">
       {/* Header */}
@@ -78,7 +91,7 @@ export const DayEntry = ({ entry, onComplete, isCompleted }: DayEntryProps) => {
       {/* Completion Button */}
       <div className="text-center pt-6">
         <Button
-          onClick={() => onComplete(entry.day)}
+          onClick={handleComplete}
           disabled={isCompleted}
           className={`px-8 py-3 text-lg ${
             isCompleted 
@@ -86,7 +99,7 @@ export const DayEntry = ({ entry, onComplete, isCompleted }: DayEntryProps) => {
               : 'bg-gradient-primary hover:shadow-glow'
           } transition-all duration-300`}
         >
-          {isCompleted ? 'Day Completed ✓' : 'Mark Day Complete'}
+          {isCompleted ? 'Day Completed ✓' : (entry.day === 1 && !user ? 'Complete Day & Create Account' : 'Mark Day Complete')}
         </Button>
       </div>
     </div>
