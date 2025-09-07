@@ -1,4 +1,4 @@
-import { ArrowRight, Calendar, Target, Users, Heart, LogIn, Star } from "lucide-react";
+import { ArrowRight, Calendar, Target, Users, Heart, LogIn, Star, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useNavigate } from "react-router-dom";
@@ -21,6 +21,15 @@ const Index = () => {
           120 Days to Freedom
         </h1>
         <div className="flex items-center space-x-2">
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => navigate("/blog")}
+            className="flex items-center space-x-2"
+          >
+            <BookOpen className="w-4 h-4" />
+            <span>Blog</span>
+          </Button>
           {user ? (
             <Button variant="outline" size="sm" onClick={signOut}>
               Sign Out
