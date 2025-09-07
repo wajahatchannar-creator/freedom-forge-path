@@ -6,6 +6,8 @@ export interface DayEntry {
   selfCheck: string;
   tip: string;
   milestone?: boolean;
+  videoId?: string;
+  blog?: string;
 }
 
 export interface UserProgress {

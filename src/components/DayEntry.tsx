@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { DayEntry as DayEntryType } from "@/types/journey";
 import { useAuth } from "@/hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+import { VideoPlayer } from "@/components/VideoPlayer";
+import { BlogSection } from "@/components/BlogSection";
 
 interface DayEntryProps {
   entry: DayEntryType;
@@ -87,6 +89,16 @@ export const DayEntry = ({ entry, onComplete, isCompleted }: DayEntryProps) => {
           </div>
         </div>
       </Card>
+
+      {/* Video Section */}
+      {entry.videoId && (
+        <VideoPlayer videoId={entry.videoId} title={entry.title} />
+      )}
+
+      {/* Blog Section */}
+      {entry.blog && (
+        <BlogSection blog={entry.blog} day={entry.day} />
+      )}
 
       {/* Completion Button */}
       <div className="text-center pt-6">
