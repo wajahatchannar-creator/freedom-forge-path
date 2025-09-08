@@ -99,13 +99,21 @@ const Blog = () => {
                     </ul>
                   </div>
 
-                  <Button
-                    variant="outline"
-                    onClick={() => navigate(`/journey/${day.day}`)}
-                    className="w-full sm:w-auto"
-                  >
-                    Read Full Day {day.day} Content
-                  </Button>
+                  <div className="flex flex-col sm:flex-row gap-3">
+                    <Button
+                      onClick={() => navigate(`/blog/${day.day}`)}
+                      className="bg-gradient-primary hover:shadow-glow flex-1"
+                    >
+                      Read Full Article
+                    </Button>
+                    <Button
+                      variant="outline"
+                      onClick={() => navigate(`/journey/${day.day}`)}
+                      className="flex-1"
+                    >
+                      Start Day {day.day}
+                    </Button>
+                  </div>
                 </CardContent>
               </Card>
             ))}
