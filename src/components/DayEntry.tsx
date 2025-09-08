@@ -6,6 +6,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import { VideoPlayer } from "@/components/VideoPlayer";
 import { BlogSection } from "@/components/BlogSection";
+import ProTipSection from "@/components/ProTipSection";
 
 interface DayEntryProps {
   entry: DayEntryType;
@@ -84,11 +85,14 @@ export const DayEntry = ({ entry, onComplete, isCompleted }: DayEntryProps) => {
             <Lightbulb className="w-5 h-5 text-success" />
           </div>
           <div className="space-y-3">
-            <h3 className="text-lg font-semibold text-success">Pro Tip</h3>
+            <h3 className="text-lg font-semibold text-success">Daily Tip</h3>
             <p className="text-foreground leading-relaxed">{entry.tip}</p>
           </div>
         </div>
       </Card>
+
+      {/* Pro Tip Section with Content Blocking Tools */}
+      <ProTipSection proTip={entry.proTip} day={entry.day} />
 
       {/* Video Section */}
       {entry.videoId && (

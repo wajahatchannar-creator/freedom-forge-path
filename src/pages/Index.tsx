@@ -4,6 +4,7 @@ import { Card } from "@/components/ui/card";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 import heroImage from "@/assets/hero-journey.jpg";
+import Hero3D from "@/components/Hero3D";
 
 const Index = () => {
   const navigate = useNavigate();
@@ -47,24 +48,26 @@ const Index = () => {
           )}
         </div>
       </div>
-      {/* Hero Section */}
+      {/* Hero Section with 3D Elements */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <Hero3D />
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30"
           style={{ backgroundImage: `url(${heroImage})` }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-background/90 to-background/60" />
+        <div className="absolute inset-0 bg-gradient-hero opacity-80" />
+        <div className="absolute inset-0 bg-gradient-mesh" />
         
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-5xl md:text-7xl font-bold mb-6">
-            <span className="bg-gradient-primary bg-clip-text text-transparent">
+            <span className="bg-gradient-primary bg-clip-text text-transparent drop-shadow-lg">
               120 Days
             </span>
             <br />
-            <span className="text-foreground">to Freedom</span>
+            <span className="text-white drop-shadow-lg">to Freedom</span>
           </h1>
           
-          <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed drop-shadow-md">
             Break free from porn addiction with a structured, day-by-day journey of growth, 
             reflection, and real transformation. You're stronger than you think.
           </p>
@@ -89,19 +92,19 @@ const Index = () => {
             </Button>
           </div>
           
-          <div className="mt-12 text-center">
-            <p className="text-sm text-muted-foreground mb-4">Join thousands who've found freedom</p>
-            <div className="flex justify-center items-center space-x-6 text-sm">
+            <div className="mt-12 text-center">
+            <p className="text-sm text-white/80 mb-4">Join thousands who've found freedom</p>
+            <div className="flex justify-center items-center space-x-6 text-sm text-white/90">
               <div className="flex items-center space-x-2">
-                <Star className="w-4 h-4 text-yellow-500 fill-current" />
+                <Star className="w-4 h-4 text-yellow-400 fill-current" />
                 <span>Science-Based Approach</span>
               </div>
               <div className="flex items-center space-x-2">
-                <Users className="w-4 h-4 text-primary" />
+                <Users className="w-4 h-4 text-white" />
                 <span>Community Support</span>
               </div>
               <div className="flex items-center space-x-2">
-                <Target className="w-4 h-4 text-success" />
+                <Target className="w-4 h-4 text-green-400" />
                 <span>Daily Guidance</span>
               </div>
             </div>

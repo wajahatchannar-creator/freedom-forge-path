@@ -5,6 +5,7 @@ export interface DayEntry {
   activity: string;
   selfCheck: string;
   tip: string;
+  proTip: string;
   milestone?: boolean;
   videoId?: string;
   blog?: string;
